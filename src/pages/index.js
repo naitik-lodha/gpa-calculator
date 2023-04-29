@@ -124,7 +124,7 @@ export default function Home() {
         <meta name="robots" content="index, follow" />
       </Head>
       <main
-        className={`flex text-center min-h-screen w-screen text-white bg-black flex-col items-center  p-24 ${inter.className}`}
+        className={`flex text-center min-h-screen w-full text-white bg-black flex-col items-center  p-24 ${inter.className}`}
       >
         <h1 className="font-bold text-4xl text-blue-400">GPA Calculator</h1>
         {GPA ? (
