@@ -1,9 +1,9 @@
 const SubjectForm = ({ subject, setSubject, addSubject }) => {
   //Style for input tags
   const inputStyle =
-    "border-2 rounded-md p-2 border-gray-400 text-blue bg-black text-center md:mx-4";
+    "border-2 rounded-lg p-2 m-3 border-gray-400 text-blue bg-black text-center md:mx-4";
   return (
-    <div className="form my-4">
+    <div className="form my-4 md:flex">
       <input
         type="text"
         placeholder="Subject Name"
@@ -44,12 +44,14 @@ const SubjectForm = ({ subject, setSubject, addSubject }) => {
         }
         className={`w-24 ${inputStyle}`}
       ></input>
-      <button
-        className="bg-green-600 text-white rounded-md mx-4 p-2"
-        onClick={addSubject}
-      >
-        Add New Subject
-      </button>
+      <div>
+        <button
+          className="bg-green-600 mt-3 text-white rounded-md mx-4 p-2"
+          onClick={addSubject}
+        >
+          Add New Subject
+        </button>
+      </div>
     </div>
   );
 };
