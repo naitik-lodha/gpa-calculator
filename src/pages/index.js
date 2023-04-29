@@ -112,6 +112,10 @@ export default function Home() {
       <Head>
         <title>GPA Calculator</title>
         <meta
+          name="google-site-verification"
+          content="dlkM9uq8vriBaZ1483qLaZ-6rRmAPY3FI6wD_XBMAkY"
+        />
+        <meta
           name="description"
           content="Naitik Lodha's  GPA calculator is a useful tool that helps students calculate their Grade Point Average (GPA) on a 4-point scale. Simply input your grades and credit hours, and the calculator will do the rest, giving you an accurate calculation of your GPA. Try it out today and streamline your academic planning!"
         />
