@@ -11,14 +11,15 @@
 }
 * {
   background-color: #252422;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
 }
-main{
-  color: #2EC4B6;
+main {
+  color: #2ec4b6;
 }
-thead{
-  color: #2EC4B6;
+h1,
+thead {
+  color: #2ec4b6;
 }
-tbody{
-  color: #FDFFFC;
+tbody {
+  color: #fdfffc;
 }
