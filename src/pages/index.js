@@ -83,13 +83,13 @@ export default function Home() {
         <meta name="robots" content="index, follow" />
       </Head>
       <main
-        className={`flex text-center min-h-screen w-full text-white bg-black flex-col items-center  p-24 ${inter.className}`}
+        className={`flex text-center min-h-screen w-full text-white flex-col items-center  p-24 ${inter.className}`}
       >
-        <h1 className="font-bold text-4xl text-blue-400">GPA Calculator</h1>
+        <h1 className="font-bold text-4xl ">GPA Calculator</h1>
         {GPA ? (
           <div>
             Your GPA is :<br />
-            <h1 className="text-5xl mt-4 animate-pulse text-pink-500">{GPA}</h1>
+            <h1 className="text-5xl mt-4 animate-pulse text-pink-400">{GPA}</h1>
           </div>
         ) : (
           <></>
