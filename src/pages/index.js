@@ -31,14 +31,13 @@ export default function Home() {
         total *= 2;
       }
 
-      setSubject({ ...subject, total });
-      const { grade, point } = CalculatePoints(subject);
+      const { grade, point } = CalculatePoints(subject, total);
       const newSubject = {
         name: subject.name,
         credit: subject.credit,
         ica: subject.ica,
         tee: subject.tee,
-        total: subject.tee,
+        total,
         grade,
         point,
       };

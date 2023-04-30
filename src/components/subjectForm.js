@@ -2,6 +2,7 @@ const SubjectForm = ({ subject, setSubject, addSubject }) => {
   //Style for input tags
   const inputStyle =
     "border-2 rounded-lg p-2 m-3 border-gray-400 text-blue bg-black text-center md:mx-4";
+
   return (
     <div className="form my-4 md:flex">
       <input
@@ -12,7 +13,7 @@ const SubjectForm = ({ subject, setSubject, addSubject }) => {
         className={inputStyle}
       ></input>
       <input
-        type="parseInt"
+        type="number"
         placeholder="Credits"
         min={0}
         max={20}
@@ -23,7 +24,7 @@ const SubjectForm = ({ subject, setSubject, addSubject }) => {
         className={`w-20 bg-transparent ${inputStyle}`}
       ></input>
       <input
-        type="parseInt"
+        type="number"
         placeholder="ICA(50)"
         max="50"
         min="0"
@@ -34,7 +35,7 @@ const SubjectForm = ({ subject, setSubject, addSubject }) => {
         className={`w-24 ${inputStyle}`}
       ></input>
       <input
-        type="parseInt"
+        type="number"
         placeholder="TEE(100)"
         max="100"
         min="0"
@@ -55,4 +56,5 @@ const SubjectForm = ({ subject, setSubject, addSubject }) => {
     </div>
   );
 };
+
 export default SubjectForm;

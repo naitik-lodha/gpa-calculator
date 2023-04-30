@@ -1,11 +1,6 @@
-function CalculatePoints(subject) {
+function CalculatePoints(subject, total) {
   let grade = "";
   let point = 0;
-  let total = subject.total;
-
-  if (subject.tee === 0 || subject.tee === "") {
-    total *= 2;
-  }
 
   if (subject.tee < 40 && (subject.tee != 0 || subject.tee != "")) {
     grade = "F";
