@@ -2,13 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
-  background-color: black;
-}
 @layer base {
   input[type="number"]::-webkit-inner-spin-button,
   input[type="number"]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
   }
+}
+* {
+  background-color: #252422;
+  font-family: 'Inter', sans-serif;
+}
+main{
+  color: #2EC4B6;
+}
+thead{
+  color: #2EC4B6;
+}
+tbody{
+  color: #FDFFFC;
 }
