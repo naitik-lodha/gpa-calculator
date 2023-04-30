@@ -1,14 +1,14 @@
-import Image from "next/image";
 import { useState } from "react";
 import { Inter } from "next/font/google";
 import SubjectForm from "@/components/subjectForm";
 import Table from "@/components/table";
 import Head from "next/head";
+import CalculatePoints from "@/components/calculatePoints";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
-  const [subjects, setSubjects] = useState({});
+  const [subjects, setSubjects] = useState([]);
   const [GPA, setGPA] = useState();
 
   const [subject, setSubject] = useState({
@@ -25,87 +25,43 @@ export default function Home() {
       alert("Please enter valid marks");
     } else {
       let total = 0;
-      let grade = "A+";
-      let point = 4;
+
       total = Math.round(subject.tee / 2 + subject.ica);
       if (subject.tee === 0 || subject.tee === "") {
         total *= 2;
       }
-      if (subject.tee < 40 && (subject.tee != 0 || subject.tee != "")) {
-        grade = "F";
-        point = 0;
-      } else if (total >= 85) {
-        grade = "A+";
-        point = 4;
-      } else if (total < 85 && total >= 81) {
-        grade = "A";
-        point = 3.75;
-      } else if (total < 81 && total >= 77) {
-        grade = "A-";
-        point = 3.5;
-      } else if (total < 77 && total >= 73) {
-        grade = "B+";
-        point = 3.25;
-      } else if (total < 73 && total >= 69) {
-        grade = "B";
-        point = 3;
-      } else if (total < 69 && total >= 65) {
-        grade = "B-";
-        point = 2.75;
-      } else if (total < 65 && total >= 61) {
-        grade = "C+";
-        point = 2.5;
-      } else if (total < 61 && total >= 57) {
-        grade = "C";
-        point = 2.25;
-      } else if (total < 57 && total >= 50) {
-        grade = "C-";
-        point = 2;
-      } else if (total < 50 && total >= 40) {
-        grade = "D";
-        point = 1.5;
-      } else {
-        grade = "F";
-        point = 0;
-      }
 
+      setSubject({ ...subject, total });
+      const { grade, point } = CalculatePoints(subject);
       const newSubject = {
         name: subject.name,
         credit: subject.credit,
         ica: subject.ica,
         tee: subject.tee,
-        total,
+        total: subject.tee,
         grade,
         point,
       };
 
-      setSubjects({ ...subjects, [subject.name]: newSubject });
+      setSubjects((current) => [...current, newSubject]);
       setSubject({ name: "", credit: "", ica: "", tee: "" });
-      console.log(subjects);
     }
   };
   const onDelete = (subj) => {
-    const updatedSubjects = Object.keys(subjects).reduce((acc, s) => {
-      if (subjects[s].name !== subj.name) {
-        acc[s] = subjects[s];
-      }
-      return acc;
-    }, {});
+    const updatedSubjects = subjects.filter((s) => s.name !== subj.name);
     setSubjects(updatedSubjects);
-
-    setSubjects(updatedSubjects);
+    setGPA(null);
   };
   const calculateGPA = () => {
     let total = 0;
     let totalCredits = 0;
-    Object.keys(subjects).forEach((sub) => {
-      total = total + subjects[sub].credit * subjects[sub].point;
-      totalCredits = totalCredits + subjects[sub].credit;
+    subjects.forEach((sub) => {
+      total = total + sub.credit * sub.point;
+      totalCredits = totalCredits + sub.credit;
     });
     let GPA = total / totalCredits;
     GPA = GPA.toFixed(2);
     setGPA(GPA);
-    alert(GPA);
   };
   return (
     <>
@@ -146,7 +102,7 @@ export default function Home() {
           addSubject={addSubject}
         />
 
-        {Object.keys(subjects).length ? (
+        {subjects.length ? (
           <>
             <Table subjects={subjects} onDelete={onDelete} />
             <button
