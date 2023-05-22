@@ -38,8 +38,8 @@ If you would like to contribute to this project, please follow these steps:
 5. Create a pull request
 
 ## Contributors
-<a href = "https://github.com/Tanu-N-Prabhu/Python/graphs/contributors">
-  <img src = "https://contrib.rocks/image?repo = naitik-lodha/gpa-calculator"/>
+<a href="https://github.com/naitik-lodha/gpa-calculator/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=naitik-lodha/gpa-calculator" />
 </a>
 
 
