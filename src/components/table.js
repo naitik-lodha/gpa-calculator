@@ -3,7 +3,7 @@ import { MdDeleteOutline } from "react-icons/md";
 const Table = ({ subjects, onDelete }) => {
   return (
     <div className="table">
-      <table className="border border-white max-w-screen-sm m-2 table-auto text-sm sm:text-base">
+      <table className="border border-white  max-w-screen-sm m-2 table-auto text-sm sm:text-base">
         <thead className="border border-white">
           <tr>
             <th className="px-2 sm:px-4 py-2 sm:py-4 md:px-6 md:py-3 border">
@@ -23,7 +23,7 @@ const Table = ({ subjects, onDelete }) => {
             </th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className="text-smoke">
           {subjects.map((subject) => (
             <tr className="border" key={subject.name}>
               <td className="px-2 sm:px-4 py-2 sm:py-4 md:px-6 md:py-3 border">
@@ -39,8 +39,11 @@ const Table = ({ subjects, onDelete }) => {
                 {subject.grade}
               </td>
               <td className="px-2 sm:px-4 py-2 sm:py-4 md:px-6 md:py-3 border">
-                <button onClick={() => onDelete(subject)}>
-                  <MdDeleteOutline size={30} color="red" />
+                <button
+                  onClick={() => onDelete(subject)}
+                  className="text-red-600 md:text-smoke hover:text-red-600"
+                >
+                  <MdDeleteOutline size={30} />
                 </button>
               </td>
             </tr>

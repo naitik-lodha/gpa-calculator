@@ -1,7 +1,7 @@
 const SubjectForm = ({ subject, setSubject, addSubject }) => {
   //Style for input tags
   const inputStyle =
-    "border-2 rounded-lg p-2 m-3 w-40 border-white text-white text-center md:mx-4";
+    "border-2 rounded-lg p-2 m-3 w-40 border-white text-smoke bg-transparent text-center md:mx-4";
 
   return (
     <div className="form my-4 md:flex">
@@ -47,7 +47,7 @@ const SubjectForm = ({ subject, setSubject, addSubject }) => {
       ></input>
       <div>
         <button
-          className="bg-green-600 mt-3 text-white rounded-md mx-4 p-2"
+          className="bg-seagreen mt-3 text-smoke rounded-md mx-4 p-2"
           onClick={addSubject}
         >
           Add New Subject
