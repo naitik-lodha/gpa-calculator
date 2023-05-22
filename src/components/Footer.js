@@ -1,6 +1,8 @@
-const Footer = () => {
+const Footer = ({ style }) => {
   return (
-    <footer className="flex flex-col items-center justify-center h-12  bg-seagreen bottom-0 fixed w-screen text-dm-black font-roboto md:h-16">
+    <footer
+      className={`flex flex-col ${style} items-center justify-center h-12  bg-seagreen bottom-0 fixed w-screen md:h-16`}
+    >
       <h1>
         Developed with <span className="animate-pulse">❤️</span> by{" "}
         <a
