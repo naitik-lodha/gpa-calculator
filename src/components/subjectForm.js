@@ -47,7 +47,7 @@ const SubjectForm = ({ subject, setSubject, addSubject }) => {
       ></input>
       <div>
         <button
-          className="bg-seagreen mt-3 text-smoke rounded-md mx-4 p-2"
+          className="bg-seagreen mt-3 text-smoke rounded-md mx-4 p-2 px-4"
           onClick={addSubject}
         >
           Add New Subject
