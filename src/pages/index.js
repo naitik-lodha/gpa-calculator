@@ -33,26 +33,26 @@ export default function Home() {
       inlineData: { data: await base64EncodedDataPromise, mimeType: file.type },
     };
   }
-
+  function removeCodeBlockMarkers(input) {
+    return input.replace(/```json|```/g, "").trim();
+  }
   async function scanPDF(e) {
     e.preventDefault();
     setLoading(true);
     const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
-    const prompt = `Extract the following details use double quotes only no single quotes from the PDF's tabular form and return them as a JSON array of objects I just need array of objects no json formatting:
+    const prompt = `Extract the following details from the PDF's tabular form and return them as an array of objects only. Use double quotes for all keys and string values. The array should have the following fields for each object:
 
-- name (string)
-- credit (number)
-- ica (number)
-- tee (number; if NA, put 0)
-- total (number)
+- "name" (string)
+- "credit" (number)
+- "ica" (number)
+- "tee" (number; if NA, put 0)
+- "total" (number)
 
-Additionally, if the maximum marks for the ICA (Internal Continuous Assessment) of a particular subject is 100, add another property:
+Additionally, if the maximum marks for "ica" (Internal Continuous Assessment) of a subject are 100, include another property:
+- "icam" (boolean; true if ica is 100, otherwise omit this property)
 
-- icam (boolean; true if ica is 100, otherwise omit this property)
-
-Note: remove JSON formatting I just need an array of objects. If you are not able to extract, simply return the string NO.
-`;
+The response should only be an array of objects, starting with [ and ending with ]. Do not include any additional text, explanations, or JSON formatting. If you cannot extract the data, return NO.`;
 
     const fileInputEl = document.querySelector("input[type=file]");
     const imageParts = await Promise.all(
@@ -62,12 +62,13 @@ Note: remove JSON formatting I just need an array of objects. If you are not abl
     const result = await model.generateContent([prompt, ...imageParts]);
     const response = await result.response;
     const text = await response.text();
+    console.log(text);
 
     if (text === "NO") {
       alert("Extraction failed. Please check the file and upload again.");
       window.location.href = "/";
     } else {
-      const subjectsFromPDF = JSON.parse(text);
+      const subjectsFromPDF = JSON.parse(removeCodeBlockMarkers(text));
       const newSubjects = subjectsFromPDF.map((subject) =>
         calculateSubject(subject)
       );
